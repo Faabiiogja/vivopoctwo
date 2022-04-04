@@ -1,2 +1,2 @@
 #base=css
-header-dialog.css
+navproducts-dialog.css
