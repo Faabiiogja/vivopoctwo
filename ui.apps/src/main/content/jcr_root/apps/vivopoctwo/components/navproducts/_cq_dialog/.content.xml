@@ -2,54 +2,75 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" 
     xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="nt:unstructured"
-    jcr:title="Properties"
+    jcr:title="Navigation Products"
     sling:resourceType="cq/gui/components/authoring/dialog">
     <content
         jcr:primaryType="nt:unstructured"
         sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
         <items jcr:primaryType="nt:unstructured">
-            <column
+            <tabs
                 jcr:primaryType="nt:unstructured"
-                sling:resourceType="granite/ui/components/coral/foundation/container">
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
                 <items jcr:primaryType="nt:unstructured">
-                    <text
+                    <ctaCatalog
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        fieldLabel="Tkdwkwdk"
-                        name="./text"/>
+                        jcr:title="CTA Catalogo"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
 
-                    <syncMenuData 
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/foundation/button"
-                        granite:id="syncMenuData"
-                        type="button"
-                        text="Clique para atualizar os dados do catalogo."
-                        variant="block"/>
+                            <syncMenuData 
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/foundation/button"
+                                granite:id="syncMenuData"
+                                type="button"
+                                text="Clique para atualizar os dados do catalogo."
+                                variant="block"/>
 
-                    <updated 
+                            <updated 
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                name="./updatedDate"
+                                readOnly="{Boolean}true"
+                                fieldLabel="Última Atualização"
+                                granite:id="updatedDate"/>
+                            <menuData2
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                name="./menuData2"
+                                granite:id="menuData"
+                                fieldLabel="Dados do catalogo"
+                                readOnly="{Boolean}true"/>
+
+                            
+                               
+                            
+                    
+                        </items>
+                     </ctaCatalog>
+                     <resultCatalog
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
-                        name="./updatedDate"
-                        readOnly="{Boolean}true"
-                        fieldLabel="Última Atualização"
-                        granite:id="updatedDate"/>
-                    <menuData2
+                        jcr:title="Resultado Catalogo"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <menuData3
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                name="./menuData3"
+                                granite:id="menuData3"
+                                fieldLabel="Titulo do Produto" />
+                        </items>
+                     </resultCatalog>
+                    <include-clientlib
                         jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
-                        name="./menuData2"
-                        granite:id="menuData"
-                        fieldLabel="Dados do Menu"
-                        readOnly="{Boolean}true"/>
-                    <pathContent
-                        jcr:primaryType="nt:unstructured"
-                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
-                        fieldDescription="Path/Url para a construção dos links no menu."
-                        fieldLabel="Caminho de destino"
-                        name="./pathContent"
-                        required="{Boolean}true"
-                        rootPath="/content/b2b/e-commerce-equipamentos" />
+                        js="cq.include"
+                        sling:resourceType="granite/ui/components/coral/foundation/includeclientlibs">
+                    </include-clientlib>
+
                 </items>
-            </column>
+            </tabs>
         </items>
     </content>
 </jcr:root>

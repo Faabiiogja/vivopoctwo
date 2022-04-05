@@ -1,39 +1,42 @@
-(function($, Granite) {
+(function ($, Granite) {
     "use strict";
-    
-    $(document).on("foundation-contentloaded", function() {        
-        $('#menuData').css({'border-color':'#ddd', 'background': '#ddd', 'cursor': 'not-allowed'});
-        $('#updatedDate').css({'border-color':'#ddd', 'background': '#ddd', 'cursor': 'not-allowed'});
 
-        $('#syncMenuData').click(function() {
-            var endpoint = '/content/b2b-servlets/ecommerceEquipmentWebService';
+    $(document).on("foundation-contentloaded", function () {
+        $('#menuData').css({ 'border-color': '#ddd', 'background': '#ddd', 'cursor': 'not-allowed' });
+        $('#updatedDate').css({ 'border-color': '#ddd', 'background': '#ddd', 'cursor': 'not-allowed' });
 
+
+
+        $('#syncMenuData').click(function () {
+            var endpoint = 'https://jsonplaceholder.typicode.com/todos';
+            console.log('DISPAROU A DIALOG');
             let loading = createLoading();
             $('#menuData').parent().after(loading);
             showResults(false, false);
 
             $.ajax({
                 url: endpoint,
-                headers: {
-                    token:"token",
-                    service:"/cms/components/HEADER_AEM"
-
-                },
                 contentType: "application/json",
                 dataType: 'json',
-                success: function(result) {
+                success: function (result) {
                     if (result) {
                         $('#menuData').val(JSON.stringify(result));
+                        result.map(function(x){
+                            let title = x.title;
+                            $('#menuData3').val(title);
+                        })
+                        
 
-                        showResults(true, false);              
+                        showResults(true, false);
                     } else {
                         showResults(true, true);
                     }
                 },
-                error: function(result) {
-                    showResults(true, true);                        
+                error: function (result) {
+                    showResults(true, true);
                 }
             })
+
 
         });
 
