@@ -1,4 +1,20 @@
-<div>
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.card-content {
+    border: 1px solid #609;
+    border-radius: 4px;
+    padding: 1rem 1.8rem;
+}
+
+</style>
+
+<div class="card-content">
     <p data-sly-text="${properties.nomeSistema}"> </p>
     <p data-sly-text="${properties.nomeComercial}"></p>
     <p data-sly-text="${properties.descricao}"></p>
